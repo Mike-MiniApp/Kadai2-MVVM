@@ -21,7 +21,7 @@ protocol ViewModelOutputs {
     var calcResult: PublishSubject<String> { get }
 }
 
-class ViewModel: ViewModelInputs, ViewModelOutputs{
+class ViewModel: ViewModelInputs, ViewModelOutputs {
 
     // Inputs
     var number1TextFieldObservable: Observable<String>
@@ -60,10 +60,6 @@ class ViewModel: ViewModelInputs, ViewModelOutputs{
     }
 
     func setupBindings() {
-        calculatorSegmentedControlObservable.subscribe { index in
-            print(index)
-        }
-        .disposed(by: disposeBag)
 
         let totalInput = Observable.combineLatest(number1TextFieldObservable, number2TextFieldObservable, calculatorSegmentedControlObservable)
 
