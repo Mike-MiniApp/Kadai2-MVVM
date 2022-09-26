@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
+// MARK: - ViewModelInputs
 protocol ViewModelInputs {
     var number1TextFieldObservable: Observable<String> { get }
     var number2TextFieldObservable: Observable<String> { get }
@@ -17,6 +18,7 @@ protocol ViewModelInputs {
     var calculatorSegmentedControlObservable: Observable<Int> { get }
 }
 
+// MARK: - ViewModelOutputs
 protocol ViewModelOutputs {
     var calcResult: PublishSubject<String> { get }
 }
