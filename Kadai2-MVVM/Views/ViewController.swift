@@ -26,7 +26,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.setupBindings()
+        setupBindings()
+    }
+
+    private func setupBindings() {
         viewModel.calcResult.bind(to: calcResultLabel.rx.text).disposed(by: disposeBag)
     }
 }

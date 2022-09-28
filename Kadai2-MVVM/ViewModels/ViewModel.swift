@@ -59,10 +59,11 @@ class ViewModel: ViewModelInputs, ViewModelOutputs {
         self.number2TextFieldObservable = number2TextFieldObservable
         self.calculateButtonTapObservable = calculateButtonTapObservable
         self.calculatorSegmentedControlObservable = calculatorSegmentedControlObservable
+
+        setupBindings()
     }
 
-    func setupBindings() {
-
+    private func setupBindings() {
         let totalInput = Observable.combineLatest(number1TextFieldObservable, number2TextFieldObservable, calculatorSegmentedControlObservable)
 
         totalInput.subscribe { number1,number2,calculatorSegmentedControl in
