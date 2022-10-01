@@ -20,19 +20,19 @@ protocol ViewModelInputs {
 
 // MARK: - ViewModelOutputs
 protocol ViewModelOutputs {
-    var calcResult: PublishSubject<String> { get }
+    var calcResult: PublishRelay<String> { get }
 }
 
 class ViewModel: ViewModelInputs, ViewModelOutputs {
 
-    // Inputs
+    // MARK: - Inputs
     var number1TextFieldObservable: Observable<String>
     var number2TextFieldObservable: Observable<String>
     var calculateButtonTapObservable: Observable<Void>
     var calculatorSegmentedControlObservable: Observable<Int>
 
-    // Outputs
-    var calcResult = PublishSubject<String>()
+    // MARK: - Outputs
+    var calcResult = PublishRelay<String>()
 
     private let disposeBag = DisposeBag()
 
@@ -59,7 +59,6 @@ class ViewModel: ViewModelInputs, ViewModelOutputs {
         self.number2TextFieldObservable = number2TextFieldObservable
         self.calculateButtonTapObservable = calculateButtonTapObservable
         self.calculatorSegmentedControlObservable = calculatorSegmentedControlObservable
-
         setupBindings()
     }
 
@@ -84,7 +83,7 @@ class ViewModel: ViewModelInputs, ViewModelOutputs {
             case .div:
                 self.calculator.divi(number1: self.number1, number2: self.number2)
             }
-            self.calcResult.onNext(String(self.calculator.calcResultNumber))
+            self.calcResult.accept(String(self.calculator.calcResultNumber))
         }).disposed(by: disposeBag)
 
     }

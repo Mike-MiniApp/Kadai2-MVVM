@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var calculateButton: UIButton!
     @IBOutlet private weak var calcResultLabel: UILabel!
 
+    // MARK: - ViewModel Connect
     private lazy var viewModel = ViewModel(number1TextFieldObservable: number1TextField.rx.text.map { $0 ?? ""}.asObservable(),
                                            number2TextFieldObservable: number2TextField.rx.text.map{ $0 ?? ""}.asObservable(),
                                            calculateButtonTapObservable: calculateButton.rx.tap.asObservable(),
